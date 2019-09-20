@@ -1,5 +1,6 @@
 from socket import socket, AF_INET, SOCK_STREAM
 
+
 def echo_client(client_sock, addr):
     print("Got connection from", addr)
 
@@ -13,6 +14,7 @@ def echo_client(client_sock, addr):
         client_out.flush()
     client_sock.close()
 
+
 def echo_server(address):
     sock = socket(AF_INET, SOCK_STREAM)
     sock.bind(address)
@@ -20,6 +22,7 @@ def echo_server(address):
     while True:
         client, addr = sock.accept()
         echo_client(client, addr)
+
 
 if __name__ == '__main__':
     print('Echo serving running on localhost:25000')
