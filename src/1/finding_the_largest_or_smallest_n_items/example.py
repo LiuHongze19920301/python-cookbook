@@ -15,6 +15,10 @@ portfolio = [
 
 cheap = heapq.nsmallest(3, portfolio, key=lambda s: s['price'])
 expensive = heapq.nlargest(3, portfolio, key=lambda s: s['price'])
-
 print(cheap)
 print(expensive)
+
+least_share = heapq.nsmallest(2, portfolio, key=lambda s: s['shares'])
+most_share= heapq.nlargest(2, portfolio, key=lambda s: s['shares'])
+print(least_share)
+print(most_share)

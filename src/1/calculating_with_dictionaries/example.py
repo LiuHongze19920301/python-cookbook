@@ -25,3 +25,15 @@ for price, name in prices_sorted:
 
 prices_sorted_map = {val: key for key, val in prices_sorted}
 print(prices_sorted_map)
+
+prices_sorted_map = {val: key for key, val in prices_sorted if key > 20}
+print(prices_sorted_map)
+
+prices_sorted_map = {val: key for key, val in prices_sorted if key > 20 if val.startswith('K')}
+print(prices_sorted_map)
+
+prices_sorted_map = {val: key for key, val in prices_sorted if 20 < key < 500}
+print(prices_sorted_map)
+
+prices_sorted_map = {val: str(val) + '-' + str(key) for key, val in prices_sorted if 20 < key < 500}
+print(prices_sorted_map)
