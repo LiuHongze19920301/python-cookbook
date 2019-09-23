@@ -1,5 +1,6 @@
 # Example of an object implementing both forward and reversed iterators
 
+
 class Countdown:
     def __init__(self, start):
         self.start = start
@@ -18,6 +19,7 @@ class Countdown:
             yield n
             n += 1
 
+
 c = Countdown(5)
 print("Forward:")
 for x in c:
@@ -26,3 +28,5 @@ for x in c:
 print("Reverse:")
 for x in reversed(c):
     print(x)
+
+print(list(c))
