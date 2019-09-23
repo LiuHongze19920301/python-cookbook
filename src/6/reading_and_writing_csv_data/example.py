@@ -3,6 +3,7 @@
 # Various samples of reading CSV files
 
 import csv
+from collections import namedtuple
 
 # (a) Reading as tuples
 
@@ -17,7 +18,7 @@ with open('stocks.csv') as f:
 # (b) Reading as namedtuples
 
 print('Reading as namedtuples')
-from collections import namedtuple
+
 with open('stocks.csv') as f:
     f_csv = csv.reader(f)
     Row = namedtuple('Row', next(f_csv))
@@ -25,7 +26,6 @@ with open('stocks.csv') as f:
         row = Row(*r)
         # Process row
         print('    ', row)
-
 
 # (c) Reading as dictionaries
 
@@ -39,7 +39,6 @@ with open('stocks.csv') as f:
 # (d) Reading into tuples with type conversion
 
 print('Reading into named tuples with type conversion')
-
 col_types = [str, float, str, str, float, int]
 with open('stocks.csv') as f:
     f_csv = csv.reader(f)
@@ -52,18 +51,11 @@ with open('stocks.csv') as f:
 # (e) Converting selected dict fields
 
 print('Reading as dicts with type conversion')
-
-field_types = [ ('Price', float),
-                ('Change', float),
-                ('Volume', int) ]
-
+field_types = [('Price', float),
+               ('Change', float),
+               ('Volume', int)]
 with open('stocks.csv') as f:
     for row in csv.DictReader(f):
-        row.update((key, conversion(row[key])) 
+        row.update((key, conversion(row[key]))
                    for key, conversion in field_types)
         print(row)
-
-        
-
-
-
