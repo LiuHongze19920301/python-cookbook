@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/15/accessing_c_code_using_ctypes" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/14/testing_output_sent_to_stdout" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
