@@ -34,6 +34,26 @@ apply_async(add, ('hello', 'world'), callback=print_result)
 print('# --- Using a bound-method')
 
 
+class CallbackHandler:
+    def __init__(self):
+        self._sequence = 0
+
+    def handle(self, result):
+        self._sequence += 1
+        print('[{}] Got: {}'.format(self._sequence, result))
+
+
+def callback_handle():
+    sequence_no = 0
+
+    def handle(result):
+        nonlocal sequence_no
+        sequence_no += 1
+        print('[{}] Got: {}'.format(sequence_no, result))
+
+    return handle
+
+
 class ResultHandler:
     def __init__(self):
         self.sequence = 0

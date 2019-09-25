@@ -34,3 +34,46 @@ for tag, *arg in records:
 def sum(items):
     head, *tail = items
     return head + sum(tail) if tail else head
+
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @property
+    def name(self):
+        print('Getter')
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        print('Setter')
+        self.__name = name
+
+    @name.deleter
+    def name(self):
+        raise AttributeError('Can not delete Person Attribute "name"')
+
+    @property
+    def age(self):
+        return self.__age
+
+    @age.setter
+    def age(self, age):
+        self.__age = age
+
+    @age.deleter
+    def age(self):
+        raise AttributeError('Can not delete Person Attribute "age"')
+
+    @property
+    def desc(self):
+        return 'Person: name = {} age = {}'.format(self.name, self.age)
+
+
+if __name__ == '__main__':
+    person = Person('leo', 28)
+    print(person.desc)
+    print(Person.__dict__)
+    print(Person.name.fget)

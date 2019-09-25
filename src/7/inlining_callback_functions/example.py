@@ -1,6 +1,9 @@
 # Example of implementing an inlined-callback function
 
 # Sample function to illustrate callback control flow
+from queue import Queue
+from functools import wraps
+
 
 def apply_async(func, args, *, callback):
     # Compute the result
@@ -9,14 +12,15 @@ def apply_async(func, args, *, callback):
     # Invoke the callback with the result
     callback(result)
 
+
 # Inlined callback implementation
-from queue import Queue
-from functools import wraps
+
 
 class Async:
     def __init__(self, func, args):
         self.func = func
         self.args = args
+
 
 def inlined_async(func):
     @wraps(func)
@@ -31,11 +35,14 @@ def inlined_async(func):
                 apply_async(a.func, a.args, callback=result_queue.put)
             except StopIteration:
                 break
+
     return wrapper
+
 
 # Sample use
 def add(x, y):
     return x + y
+
 
 @inlined_async
 def test():
@@ -48,6 +55,7 @@ def test():
         print(r)
     print('Goodbye')
 
+
 if __name__ == '__main__':
     # Simple test
     print('# --- Simple test')
@@ -55,7 +63,7 @@ if __name__ == '__main__':
 
     print('# --- Multiprocessing test')
     import multiprocessing
+
     pool = multiprocessing.Pool()
     apply_async = pool.apply_async
     test()
-

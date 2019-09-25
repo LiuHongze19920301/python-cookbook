@@ -2,13 +2,16 @@
 
 import functools
 
+
 def output_result(result, log=None):
     if log is not None:
         log.debug('Got: %r', result)
 
+
 # A sample function
 def add(x, y):
     return x + y
+
 
 if __name__ == '__main__':
     import logging

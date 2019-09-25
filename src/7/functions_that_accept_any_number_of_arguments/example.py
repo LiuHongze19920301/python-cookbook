@@ -20,6 +20,7 @@ def make_element(name, value, **attrs):
     return element
 
 
+print(make_element.__annotations__)
 # Example
 # Creates '<item size="large" quantity="6">Albatross</item>'
 print(make_element('item', 'Albatross', size='large', quantity=6))
